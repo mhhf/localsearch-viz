@@ -1,0 +1,27 @@
+/* CSS declarations go here */
+.countries {
+  fill: #b0d0ab;
+  stroke: #6cb0e0;
+  stroke-width: 0.5px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.peer {
+  fill: #e0771a;
+  z-index: 1;
+  stroke: #333;
+  stroke-width: 1px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.path {
+  fill: rgba(0,0,0,0);
+  stroke: #183fcf;
+  stroke-width: 1px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  
+}
