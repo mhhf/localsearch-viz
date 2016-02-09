@@ -5,6 +5,14 @@ Peer = new Mongo.Collection("peer");
 if (Meteor.isClient) {
   // counter starts at 0
   Session.setDefault('counter', 0);
+  
+  Template.logs.logs = function() {
+    return Logs.find();
+  }
+  
+  Template.logs.print = function(log) {
+    return `${new Date(log.alive)}     ${(log.remote.address)}:${log.remote.port}@(${log.msg.loc[0]},${log.msg.loc[0]}): ${log.msg.type}  -  ${log.msg.links}`;
+  }
 
 }
 
@@ -28,7 +36,7 @@ if (Meteor.isServer) {
     var peer = Peer.findOne( _id );
     var alive = +(new Date());
     
-    Logs.insert({ msg, alive });
+    Logs.insert({ msg, alive, remote });
     
     switch ( msg.type ) {
       case 'boot':
@@ -48,6 +56,7 @@ if (Meteor.isServer) {
   Meteor.startup(function () {
     
     Peer.remove({});
+    Logs.remove({});
     
     setInterval( Meteor.bindEnvironment(function() {
       
